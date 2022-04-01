@@ -89,6 +89,14 @@
         });
     }, 3000)
 </script>
+<script>
+    console.log = function() {}
+    $("#produk").on('change', function() {
+
+        $(".qty").html($(this).find(':selected').attr('data-qty'));
+        $(".qty").val($(this).find(':selected').attr('data-qty'));
+    });
+</script>
 </body>
 
 </html>

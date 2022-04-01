@@ -5,7 +5,8 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>DataTables</h1>
+                    <h1>Produk Keluar</h1>
+                    <a href="<?= base_url('ControllerPengelolaanBarang/create_brg_keluar') ?>" class="btn btn-warning">Add Produk Keluar</a>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -24,39 +25,39 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                            <h3 class="card-title">Informasi Produk Keluar</h3>
                         </div>
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
+                                        <th class="text-center">No</th>
+                                        <th class="text-center">Nama Produk</th>
+                                        <th class="text-center">Tanggal Keluar</th>
+                                        <th class="text-center">Quantity</th>
+                                        <th class="text-center">Time</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 4.0
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td> 4</td>
-                                        <td>X</td>
-                                    </tr>
+                                    <?php
+                                    $no = 1;
+                                    foreach ($brg_keluar as $key => $value) {
+                                    ?>
+                                        <tr>
+                                            <td><?= $no++ ?></td>
+                                            <td><?= $value->nama_produk ?></td>
+                                            <td><?= $value->tgl_keluar ?></td>
+                                            <td class="text-center"><span class="badge badge-warning"><?= $value->qty_kel ?></span></td>
+                                            <td><?= $value->create_time ?></td>
+                                            <td class="text-center"> <a href="<?= base_url('ControllerPengelolaanBarang/hapus_brg_keluar/' . $value->id_produk_keluar) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                                <a href="<?= base_url('ControllerPengelolaanBarang/update_brg_keluar/' . $value->id_produk_keluar) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                    }
+                                    ?>
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
-                                    </tr>
-                                </tfoot>
                             </table>
                         </div>
                         <!-- /.card-body -->

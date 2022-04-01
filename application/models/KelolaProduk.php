@@ -32,6 +32,20 @@ class KelolaProduk extends CI_Model
         $this->db->where('id_barang_masuk', $id);
         $this->db->update('produk_masuk', $data);
     }
+
+    //kelola data barang keluar
+    public function barang_keluar()
+    {
+        $this->db->select('*');
+        $this->db->from('produk_keluar');
+        $this->db->join('produk_masuk', 'produk_keluar.id_produk_masuk = produk_masuk.id_produk_masuk', 'left');
+        $this->db->join('produk', 'produk_masuk.id_produk = produk.id_produk', 'left');
+        return $this->db->get()->result();
+    }
+    public function insert_brg_keluar($data)
+    {
+        $this->db->insert('produk_keluar', $data);
+    }
 }
                         
 /* End of file KelolaProduk.php */

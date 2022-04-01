@@ -93,7 +93,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index2.html" class="nav-link">
+                            <a href="<?= base_url('ControllerPengelolaanBarang/barang_keluar') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'ControllerPengelolaanBarang' && $this->uri->segment(2) == 'barang_keluar') {
+                                                                                                                        echo 'active';
+                                                                                                                    }  ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Produk Keluar</p>
                             </a>
