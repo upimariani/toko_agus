@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Log in</title>
+    <title>LOGIN USER TOKO AGUS</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,6 +25,27 @@
         <div class="login-logo">
             <a href="../../index2.html"><b>LOGIN</b>USER</a>
         </div>
+
+        <?php if ($this->session->userdata('success')) {
+        ?>
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                <?= $this->session->userdata('success') ?>
+            </div>
+        <?php
+        } ?>
+        <?php if ($this->session->userdata('error')) {
+        ?>
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+                <?= $this->session->userdata('error') ?>
+            </div>
+        <?php
+        } ?>
+
+
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
@@ -72,7 +93,13 @@
     <script src="<?= base_url('asset/AdminLTE/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?= base_url('asset/AdminLTE/') ?>dist/js/adminlte.min.js"></script>
-
+    <script>
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function() {
+                $(this).remove();
+            });
+        }, 3000)
+    </script>
 </body>
 
 </html>

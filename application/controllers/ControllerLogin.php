@@ -18,7 +18,7 @@ class controllerLogin extends CI_Controller
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
         if ($this->form_validation->run() == FALSE) {
-            
+
             $this->load->view('content/login');
         } else {
             $username = $this->input->post('username');
@@ -40,6 +40,8 @@ class controllerLogin extends CI_Controller
     public function logout()
     {
         $this->ci->session->unset_userdata('username');
+        $this->session->set_flashdata('success', 'Anda Berhasil LogOut!');
+
         redirect('controllerLogin');
     }
     public function protect()
