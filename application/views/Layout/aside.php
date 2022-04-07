@@ -23,9 +23,9 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="https://adminlte.io/docs/3.0" class="nav-link   <?php if ($this->uri->segment(1) == '') {
-                                                                                    echo 'active';
-                                                                                }  ?>">
+                    <a href="<?= base_url('ControllerDashboard') ?>" class="nav-link   <?php if ($this->uri->segment(1) == 'ControllerDashboard') {
+                                                                                            echo 'active';
+                                                                                        }  ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
                     </a>
@@ -50,6 +50,14 @@
                                                                                                     }  ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data User</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('controllerDataMaster/supplier') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'controllerDataMaster' && $this->uri->segment(2) == 'supplier') {
+                                                                                                            echo 'active';
+                                                                                                        }  ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Supplier</p>
                             </a>
                         </li>
                         <li class="nav-item">

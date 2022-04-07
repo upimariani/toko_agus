@@ -15,6 +15,15 @@
                     </ol>
                 </div>
             </div>
+            <?php if ($this->session->userdata('success')) {
+            ?>
+                <div class="alert alert-success alert-dismissible mt-3">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                    <?= $this->session->userdata('success') ?>
+                </div>
+            <?php
+            } ?>
         </div><!-- /.container-fluid -->
     </section>
 
@@ -49,7 +58,7 @@
                                             <td><?= $value->nama_produk ?></td>
                                             <td><?= $value->tgl_keluar ?></td>
                                             <td class="text-center"><span class="badge badge-warning"><?= $value->qty_kel ?></span></td>
-                                            <td><?= $value->create_time ?></td>
+                                            <td><?= $value->time ?></td>
                                             <td class="text-center"> <a href="<?= base_url('ControllerPengelolaanBarang/hapus_brg_keluar/' . $value->id_produk_keluar) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                                 <a href="<?= base_url('ControllerPengelolaanBarang/update_brg_keluar/' . $value->id_produk_keluar) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
                                             </td>

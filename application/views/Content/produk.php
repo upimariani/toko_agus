@@ -50,6 +50,7 @@
                                                 <th class="text-center">No</th>
                                                 <th class="text-center">Kode Produk</th>
                                                 <th class="text-center">Nama</th>
+                                                <th class="text-center">Supplier</th>
                                                 <th class="text-center">Kategori</th>
                                                 <th class="text-center">Harga</th>
                                                 <th class="text-center">Stok</th>
@@ -65,6 +66,7 @@
                                                     <td class="text-center"><?= $no++ ?></td>
                                                     <td class="text-center"><?= $value->kode_produk ?></td>
                                                     <td class="text-center"><?= $value->nama_produk ?></td>
+                                                    <td class="text-center"><?= $value->nama_supplier ?></td>
                                                     <td class="text-center"><?= $value->nama_kategori ?></td>
                                                     <td class="text-center"><?= $value->harga_produk ?></td>
                                                     <td class="text-center"><?= $value->stok ?></td>
@@ -100,6 +102,24 @@
                                                     <label for="exampleInputPassword1">Nama Produk</label>
                                                     <input type="text" name="nama" class="form-control" value="<?= set_value('nama') ?>" id="exampleInputPassword1" placeholder="Masukkan Alamat">
                                                     <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Supplier Produk</label>
+                                                    <select name="supplier" class="form-control">
+                                                        <option value="">---Pilih Supplier Produk---</option>
+                                                        <?php
+                                                        foreach ($supplier as $key => $value) {
+                                                        ?>
+                                                            <option value="<?= $value->id_supplier ?>"><?= $value->nama_supplier ?></option>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                    <?= form_error('supplier', '<small class="text-danger pl-3">', '</small>'); ?>
                                                 </div>
                                             </div>
                                         </div>

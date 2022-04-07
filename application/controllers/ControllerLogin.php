@@ -30,7 +30,7 @@ class controllerLogin extends CI_Controller
                 $this->ci->session->set_userdata('username', $username);
                 $this->session->set_flashdata('success', 'Selamat Datang, ', $username);
 
-                redirect(base_url());
+                redirect(base_url('ControllerDashboard'));
             } else {
                 $this->session->set_flashdata('error', 'Username dan Password Salah!!!');
                 redirect(base_url('controllerLogin'));

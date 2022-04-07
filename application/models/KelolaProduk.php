@@ -12,8 +12,23 @@ class KelolaProduk extends CI_Model
         $this->db->from('produk_masuk');
         $this->db->join('produk', 'produk_masuk.id_produk = produk.id_produk', 'left');
         $this->db->join('kategori', 'produk.id_kategori = kategori.id_kategori', 'left');
+        $this->db->where('produk_masuk.qty!=0');
 
         return $this->db->get()->result();
+    }
+    public function select_produk_byid($id)
+    {
+        $this->db->select('*');
+        $this->db->from('produk');
+        $this->db->where('id_produk', $id);
+        return $this->db->get()->row();
+    }
+    public function select_stok_byid($id)
+    {
+        $this->db->select('*');
+        $this->db->from('produk_masuk');
+        $this->db->where('id_produk_masuk', $id);
+        return $this->db->get()->row();
     }
     public function insert_brg_masuk($data)
     {
@@ -45,6 +60,15 @@ class KelolaProduk extends CI_Model
     public function insert_brg_keluar($data)
     {
         $this->db->insert('produk_keluar', $data);
+    }
+    public function edit_brg_keluar($id)
+    {
+        $this->db->select('*');
+        $this->db->from('produk_keluar');
+        $this->db->join('produk_masuk', 'produk_keluar.id_produk_masuk = produk_masuk.id_produk_masuk', 'left');
+        $this->db->join('produk', 'produk_masuk.id_produk = produk.id_produk', 'left');
+        $this->db->where('id_produk_keluar', $id);
+        return $this->db->get()->row();
     }
 }
                         

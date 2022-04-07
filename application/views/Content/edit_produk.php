@@ -55,6 +55,26 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Supplier Produk</label>
+                                            <select name="supplier" class="form-control">
+                                                <option value="">---Pilih Supplier Produk---</option>
+                                                <?php
+                                                foreach ($supplier as $key => $item) {
+                                                ?>
+                                                    <option value="<?= $item->id_supplier ?>" <?php if ($item->id_supplier == $produk->id_supplier) {
+                                                                                                    echo 'selected';
+                                                                                                } ?>><?= $item->nama_supplier ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                            <?= form_error('supplier', '<small class="text-danger pl-3">', '</small>'); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Kategori</label>

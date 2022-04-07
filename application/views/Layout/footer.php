@@ -95,6 +95,13 @@
 
         $(".qty").html($(this).find(':selected').attr('data-qty'));
         $(".qty").val($(this).find(':selected').attr('data-qty'));
+
+
+        $(".id").html($(this).find(':selected').attr('data-id'));
+        $(".id").val($(this).find(':selected').attr('data-id'));
+
+        $(".stok").html($(this).find(':selected').attr('data-stok'));
+        $(".stok").val($(this).find(':selected').attr('data-stok'));
     });
 </script>
 </body>

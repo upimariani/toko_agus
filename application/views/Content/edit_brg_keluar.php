@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Create Produk Keluar</h1>
+                    <h1>Edit Produk Keluar</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -36,23 +36,23 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="<?= base_url('ControllerPengelolaanBarang/create_brg_keluar') ?>" method="POST" role="form">
-                            <input type="hidden" name="qty_seb" class="qty">
-                            <input type="hidden" name="id" class="id">
-                            <input type="hidden" name="stok" class="stok">
+                        <form action="<?= base_url('ControllerPengelolaanBarang/update_brg_keluar/' . $brg_kel->id_produk_keluar) ?>" method="POST" role="form">
+                            <input type="text" name="stok_brg_masuk" value="<?= $brg_kel->qty ?>">
+                            <input type="text" name="stok_keluar" value="<?= $brg_kel->qty_kel ?>">
+                            <input type="text" name="id_brg_masuk" value="<?= $brg_kel->id_produk_masuk ?>">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Produk</label>
-                                            <select class="form-control" id="produk" name="produk">
+                                            <select class="form-control" id="produk" name="produk" disabled>
                                                 <option value="">---Pilih Produk---</option>
                                                 <?php
                                                 foreach ($brg_masuk as $key => $value) {
                                                 ?>
-                                                    <option value="<?= $value->id_produk_masuk ?>" data-stok="<?= $value->stok ?>" data-id="<?= $value->id_produk ?>" data-qty="<?= $value->qty ?>" <?php if (set_value('produk') == $value->id_produk_masuk) {
-                                                                                                                                                                                                        echo 'selected';
-                                                                                                                                                                                                    } ?>><?= $value->nama_produk ?> | <?= $value->create_time ?></option>
+                                                    <option data-qty="<?= $value->qty ?>" value="<?= $value->id_produk_masuk ?>" <?php if ($brg_kel->id_produk_masuk == $value->id_produk_masuk) {
+                                                                                                                                        echo 'selected';
+                                                                                                                                    } ?>><?= $value->nama_produk ?> | <?= $value->create_time ?></option>
                                                 <?php
                                                 }
                                                 ?>
@@ -63,7 +63,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Quantity Sebelumnya</label>
-                                            <input type="number" class="qty form-control" id="exampleInputPassword1" placeholder="Quantity" readonly>
+                                            <input type="number" value="<?= $brg_kel->qty ?>" class="qty form-control" id="exampleInputPassword1" placeholder="Quantity" readonly>
 
                                         </div>
                                     </div>
@@ -73,7 +73,7 @@
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Tanggal Produk Keluar</label>
                                             <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                                <input type="text" value="<?= set_value('tgl') ?>" name="tgl" class="form-control datetimepicker-input" placeholder="Masukkan Tanggal Barang Masuk" data-target="#reservationdate" />
+                                                <input type="text" value="<?= $brg_kel->tgl_keluar ?>" name="tgl" class="form-control datetimepicker-input" placeholder="Masukkan Tanggal Barang Masuk" data-target="#reservationdate" />
                                                 <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                                 </div>
@@ -84,7 +84,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Quantity Keluar</label>
-                                            <input type="number" value="<?= set_value('qty_kel') ?>" name="qty_kel" class="form-control" id="exampleInputPassword1" placeholder="Masukkan Quantity">
+                                            <input type="number" value="<?= $brg_kel->qty_kel ?>" name="qty_kel" class="form-control" id="exampleInputPassword1" placeholder="Masukkan Quantity">
                                             <?= form_error('qty_kel', '<small class="text-danger pl-3">', '</small>'); ?>
                                         </div>
                                     </div>

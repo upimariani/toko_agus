@@ -61,7 +61,7 @@
                                             <td><?= $value->tgl_masuk ?></td>
                                             <td><?= $value->qty ?></td>
                                             <td><?= $value->create_time ?></td>
-                                            <td class="text-center"> <a href="<?= base_url('ControllerPengelolaanBarang/hapus_brg_masuk/' . $value->id_produk_masuk) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                            <td class="text-center"> <a href="<?= base_url('ControllerPengelolaanBarang/hapus_brg_masuk/' . $value->id_produk_masuk . '/' . $value->id_produk) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                                 <a href="<?= base_url('ControllerPengelolaanBarang/update_brg_masuk/' . $value->id_produk_masuk) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
                                             </td>
                                         </tr>
