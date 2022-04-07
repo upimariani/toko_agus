@@ -47,25 +47,38 @@ class ControllerPengelolaanBarang extends CI_Controller
                 'tgl_masuk' => $this->input->post('tgl')
             );
             $this->KelolaProduk->insert_brg_masuk($data);
-
-            $a = $this->KelolaProduk->select_produk_byid($data['id_produk']);
-            $stok = $a->stok + $data['qty'];
-            $qty = array('stok' => $stok);
-            $this->db->where('id_produk', $data['id_produk']);
-            $this->db->update('produk', $qty);
             $this->session->set_flashdata('success', 'Data Produk Masuk Berhasil Ditambahkan!');
             redirect('ControllerPengelolaanBarang/barang_masuk');
         }
     }
-    public function hapus_brg_masuk($id, $id_produk)
+    public function edit_brg_masuk($id)
     {
-        $a = $this->KelolaProduk->select_produk_byid($id_produk);
-        $b = $this->KelolaProduk->select_stok_byid($id);
-        $stok = array('stok' => $a->stok - $b->qty);
+        $this->form_validation->set_rules('qty', 'Quantity', 'required');
+        $this->form_validation->set_rules('tgl', 'Tanggal Masuk', 'required');
 
-        $this->db->where('id_produk', $id_produk);
-        $this->db->update('produk', $stok);
-
+        if ($this->form_validation->run() == FALSE) {
+            $data = array(
+                'produk' => $this->DataMaster->select_produk(),
+                'brg_masuk' => $this->KelolaProduk->edit_brg_masuk($id)
+            );
+            $this->load->view('Layout/head');
+            $this->load->view('Layout/navbar');
+            $this->load->view('Layout/aside');
+            $this->load->view('Content/edit_brg_masuk', $data);
+            $this->load->view('Layout/footer');
+        } else {
+            $data = array(
+                'qty' => $this->input->post('qty'),
+                'tgl_masuk' => $this->input->post('tgl')
+            );
+            $this->db->where('id_produk_masuk', $id);
+            $this->db->update('produk_masuk', $data);
+            $this->session->set_flashdata('success', 'Data Produk Masuk Berhasil Diperbaharui!');
+            redirect('ControllerPengelolaanBarang/barang_masuk');
+        }
+    }
+    public function hapus_brg_masuk($id)
+    {
         $this->db->where('id_produk_masuk', $id);
         $this->db->delete('produk_masuk');
         $this->session->set_flashdata('success', 'Data Barang Masuk Berhasil Dihapus!');
@@ -123,12 +136,6 @@ class ControllerPengelolaanBarang extends CI_Controller
 
                 $id_produk = $this->input->post('id');
                 $stok = $this->input->post('stok');
-
-                $stok_s = array(
-                    'stok' => $stok - $qty
-                );
-                $this->db->where('id_produk', $id_produk);
-                $this->db->update('produk', $stok_s);
 
                 $this->session->set_flashdata('success', 'Data Produk Keluar Berhasil Ditambahkan!');
                 redirect('ControllerPengelolaanBarang/barang_keluar');

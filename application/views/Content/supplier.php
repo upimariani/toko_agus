@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Data Supplier</h1>
+                    <h1><i class="fas fa-user-tie"></i> Data Supplier</h1>
 
                 </div>
 
@@ -16,7 +16,7 @@
                     </ol>
                 </div>
             </div>
-            <button data-toggle="modal" data-target="#modal-default" class="btn btn-success">Tambah Supplier</button>
+            <button data-toggle="modal" data-target="#modal-default" class="btn btn-success"><i class="fas fa-marker"></i> Tambah Supplier</button>
             <?php if ($this->session->userdata('success')) {
             ?>
                 <div class="alert alert-success alert-dismissible mt-3">

@@ -39,7 +39,7 @@ class KelolaProduk extends CI_Model
         $this->db->select('*');
         $this->db->from('produk_masuk');
         $this->db->join('produk', 'produk_masuk.id_produk = produk.id_produk', 'left');
-        $this->db->where('produk_masuk.id_barang_masuk', $id);
+        $this->db->where('produk_masuk.id_produk_masuk', $id);
         return $this->db->get()->row();
     }
     public function update_brg_masuk($id, $data)

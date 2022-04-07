@@ -50,9 +50,9 @@
                                                 <?php
                                                 foreach ($brg_masuk as $key => $value) {
                                                 ?>
-                                                    <option value="<?= $value->id_produk_masuk ?>" data-stok="<?= $value->stok ?>" data-id="<?= $value->id_produk ?>" data-qty="<?= $value->qty ?>" <?php if (set_value('produk') == $value->id_produk_masuk) {
-                                                                                                                                                                                                        echo 'selected';
-                                                                                                                                                                                                    } ?>><?= $value->nama_produk ?> | <?= $value->create_time ?></option>
+                                                    <option value="<?= $value->id_produk_masuk ?>" data-id="<?= $value->id_produk ?>" data-qty="<?= $value->qty ?>" <?php if (set_value('produk') == $value->id_produk_masuk) {
+                                                                                                                                                                        echo 'selected';
+                                                                                                                                                                    } ?>><?= $value->nama_produk ?> | <?= $value->create_time ?></option>
                                                 <?php
                                                 }
                                                 ?>
@@ -94,7 +94,7 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-warning">Save</button>
+                                <button type="submit" class="btn btn-warning"><i class="far fa-save"></i> Save</button>
                                 <a href="<?= base_url('ControllerPengelolaanBarang/barang_masuk') ?>" class="btn btn-danger">Kembali</a>
                             </div>
                         </form>

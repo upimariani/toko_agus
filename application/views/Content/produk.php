@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Data Produk</h1>
+                    <h1><i class="fas fa-barcode"></i> Data Produk</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -35,8 +35,8 @@
                     <div class="card-header d-flex p-0">
                         <h3 class="card-title p-3">Produk</h3>
                         <ul class="nav nav-pills ml-auto p-2">
-                            <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Informasi Produk</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Create New Produk</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab"><i class="fas fa-sticky-note"></i> Informasi Produk</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab"><i class="fas fa-marker"></i> Create New Produk</a></li>
 
                         </ul>
                     </div><!-- /.card-header -->
@@ -53,7 +53,6 @@
                                                 <th class="text-center">Supplier</th>
                                                 <th class="text-center">Kategori</th>
                                                 <th class="text-center">Harga</th>
-                                                <th class="text-center">Stok</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
@@ -69,7 +68,6 @@
                                                     <td class="text-center"><?= $value->nama_supplier ?></td>
                                                     <td class="text-center"><?= $value->nama_kategori ?></td>
                                                     <td class="text-center"><?= $value->harga_produk ?></td>
-                                                    <td class="text-center"><?= $value->stok ?></td>
                                                     <td class="text-center">
                                                         <a href="<?= base_url('controllerdatamaster/hapus_produk/' . $value->id_produk) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                                         <a href="<?= base_url('controllerdatamaster/update_produk/' . $value->id_produk) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>

@@ -106,7 +106,7 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-success">Update</button>
+                                <button type="submit" class="btn btn-success"><i class="far fa-save"></i> Update</button>
                                 <a href="<?= base_url('controllerdatamaster/produk') ?>" class="btn btn-danger">Kembali</a>
                             </div>
                         </form>

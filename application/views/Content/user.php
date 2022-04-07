@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Data User</h1>
+                    <h1><i class="fas fa-user-alt"></i> Data User</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -14,7 +14,7 @@
                     </ol>
                 </div>
             </div>
-            <button id="create_user" class="btn btn-primary">Create User</button>
+            <button id="create_user" class="btn btn-primary"><i class="fas fa-marker"></i> Create User</button>
 
             <?php if ($this->session->userdata('success')) {
             ?>
@@ -38,7 +38,7 @@
                     <!-- general form elements -->
                     <div id="show_input_user" class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Create New User</h3>
+                            <h3 class="card-title"><i class="fas fa-marker"></i> Create New User</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -104,7 +104,7 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-success">Submit</button>
+                                <button type="submit" class="btn btn-success"><i class="far fa-save"></i> Save</button>
                             </div>
                         </form>
                     </div>

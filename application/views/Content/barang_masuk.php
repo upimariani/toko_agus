@@ -6,7 +6,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>Produk Masuk</h1>
-                    <a href="<?= base_url('ControllerPengelolaanBarang/create_brg_masuk') ?>" class="btn btn-warning mt-3">Add Produk Masuk</a>
+                    <a href="<?= base_url('ControllerPengelolaanBarang/create_brg_masuk') ?>" class="btn btn-warning mt-3"><i class="fas fa-marker"></i> Add Produk Masuk</a>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -62,7 +62,7 @@
                                             <td><?= $value->qty ?></td>
                                             <td><?= $value->create_time ?></td>
                                             <td class="text-center"> <a href="<?= base_url('ControllerPengelolaanBarang/hapus_brg_masuk/' . $value->id_produk_masuk . '/' . $value->id_produk) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                                                <a href="<?= base_url('ControllerPengelolaanBarang/update_brg_masuk/' . $value->id_produk_masuk) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                                                <a href="<?= base_url('ControllerPengelolaanBarang/edit_brg_masuk/' . $value->id_produk_masuk) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
                                             </td>
                                         </tr>
                                     <?php

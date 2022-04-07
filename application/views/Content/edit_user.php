@@ -91,7 +91,7 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-success">Submit</button>
+                                <button type="submit" class="btn btn-success"><i class="far fa-save"></i> Submit</button>
                                 <a class="btn btn-danger" href="<?= base_url('controllerdatamaster/user') ?>">Kembali</a>
                             </div>
                         </form>
