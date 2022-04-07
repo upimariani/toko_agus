@@ -37,9 +37,9 @@
                         <!-- /.card-header -->
                         <!-- form start -->
                         <form action="<?= base_url('ControllerPengelolaanBarang/update_brg_keluar/' . $brg_kel->id_produk_keluar) ?>" method="POST" role="form">
-                            <input type="text" name="stok_brg_masuk" value="<?= $brg_kel->qty ?>">
-                            <input type="text" name="stok_keluar" value="<?= $brg_kel->qty_kel ?>">
-                            <input type="text" name="id_brg_masuk" value="<?= $brg_kel->id_produk_masuk ?>">
+                            <input type="hidden" name="stok_brg_masuk" value="<?= $brg_kel->qty ?>">
+                            <input type="hidden" name="stok_keluar" value="<?= $brg_kel->qty_kel ?>">
+                            <input type="hidden" name="id_brg_masuk" value="<?= $brg_kel->id_produk_masuk ?>">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-6">
