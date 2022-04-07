@@ -16,7 +16,8 @@ class controllerDashboard extends CI_Controller
             'produk' => $this->Dashboard->produk(),
             'brg_masuk' => $this->Dashboard->produk_masuk(),
             'brg_keluar' => $this->Dashboard->produk_keluar(),
-            'supplier' => $this->Dashboard->supplier()
+            'supplier' => $this->Dashboard->supplier(),
+            'lap' => $this->Dashboard->laporan_stok()
         );
         $this->load->view('Layout/head');
         $this->load->view('Layout/navbar');

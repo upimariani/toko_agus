@@ -27,6 +27,16 @@ class Dashboard extends CI_Model
         $this->db->from('produk_keluar');
         return $this->db->get()->num_rows();
     }
+
+    //alert stok abis
+    public function laporan_stok()
+    {
+        $this->db->select('sum(qty) as qty, produk_masuk.id_produk, nama_produk, harga_produk');
+        $this->db->from('produk_masuk');
+        $this->db->join('produk', 'produk_masuk.id_produk = produk.id_produk', 'left');
+        $this->db->group_by('produk_masuk.id_produk');
+        return $this->db->get()->result();
+    }
 }
 
 /* End of file Dashboard.php */

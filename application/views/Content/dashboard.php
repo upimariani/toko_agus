@@ -88,6 +88,87 @@
 
             <!-- right col -->
         </div>
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="card">
+                    <div class="card-header border-0">
+                        <h3 class="card-title">Laporan Stok Barang</h3>
+                        <div class="card-tools">
+                            <a href="#" class="btn btn-tool btn-sm">
+                                <i class="fas fa-download"></i>
+                            </a>
+                            <a href="#" class="btn btn-tool btn-sm">
+                                <i class="fas fa-bars"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-striped table-valign-middle">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($lap as $key => $value) {
+                                ?>
+                                    <tr>
+                                        <td>
+                                            <?= $value->nama_produk ?>
+                                        </td>
+                                        <td>Rp. <?= number_format($value->harga_produk, 0) ?></td>
+                                        <td>
+                                            <?php
+                                            if ($value->qty <= 5) {
+                                            ?>
+                                                <small class="text-danger mr-1">
+                                                    <i class="fas fa-arrow-down"></i>
+                                                    <?= $value->qty ?>
+                                                </small>
+                                                <span class="badge bg-danger">Segera Restock!</span>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <small class="text-success mr-1">
+                                                    <i class="fas fa-arrow-up"></i>
+                                                    <?= $value->qty ?>
+                                                </small>
+                                            <?php
+                                            }
+                                            ?>
+                                        </td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <?php
+                foreach ($lap as $key => $value) {
+                    if ($value->qty <= 5) {
+                ?>
+                        <div class="callout callout-danger">
+                            <h5>Produk <strong> <?= $value->nama_produk ?></strong></h5>
+
+                            <p>Segera Melakukan Pemesanan Kembali, sebelum stok produk kamu habis!</p>
+                        </div>
+                <?php
+                    }
+                }
+                ?>
+
+            </div>
+        </div>
+
+
+        <!-- /.col-md-6 -->
         <!-- /.row (main row) -->
     </section>
     <!-- /.content -->
