@@ -30,11 +30,11 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left column -->
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Update Data Produk</h3>
+                            <h3 class="card-title"><i class="far fa-edit"></i> Update Data Produk</h3>
                         </div>
                         <form action="<?= base_url('controllerDataMaster/update_produk/' . $produk->id_produk) ?>" method="POST" role="form">
                             <div class="card-body">
@@ -107,7 +107,7 @@
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success"><i class="far fa-save"></i> Update</button>
-                                <a href="<?= base_url('controllerdatamaster/produk') ?>" class="btn btn-danger">Kembali</a>
+                                <a href="<?= base_url('controllerDataMaster/produk') ?>" class="btn btn-danger">Kembali</a>
                             </div>
                         </form>
                     </div>

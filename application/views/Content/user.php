@@ -136,13 +136,17 @@
                                     foreach ($user as $key => $value) {
                                     ?>
                                         <tr>
-                                            <td><?= $no++ ?></td>
-                                            <td><?= $value->nama_user ?></td>
-                                            <td><?= $value->alamat ?></td>
-                                            <td><?= $value->no_hp ?></td>
-                                            <td><?= $value->username ?></td>
-                                            <td><?= $value->password ?></td>
-                                            <td><?= $value->level_user ?></td>
+                                            <td class="text-center"><?= $no++ ?></td>
+                                            <th class="text-center"><?= $value->nama_user ?></th>
+                                            <td class="text-center"><?= $value->alamat ?></td>
+                                            <td class="text-center"><?= $value->no_hp ?></td>
+                                            <td class="text-center"><span class="badge bg-success"><?= $value->username ?></span></td>
+                                            <td class="text-center"><span class="badge bg-warning"><?= $value->password ?></span></td>
+                                            <td class="text-center"><?php if ($value->level_user == '1') {
+                                                                        echo 'Admin';
+                                                                    } else {
+                                                                        echo 'Pemilik';
+                                                                    } ?></td>
                                             <td class="text-center">
                                                 <a href="<?= base_url('controllerdatamaster/hapus_user/' . $value->id_user) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                                 <a href="<?= base_url('controllerdatamaster/update_user/' . $value->id_user) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>

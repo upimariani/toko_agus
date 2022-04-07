@@ -29,7 +29,7 @@
 
         </div><!-- /.container-fluid -->
     </section>
-    <div class="col-md-12">
+    <div class="col-md-8">
         <div class="row">
             <div class="col-12">
                 <!-- Custom Tabs -->
@@ -40,7 +40,6 @@
                                 <tr>
                                     <th class="text-center">No</th>
                                     <th class="text-center">Nama Supplier</th>
-                                    <th class="text-center">Nama Toko</th>
                                     <th class="text-center">Alamat</th>
                                     <th class="text-center">No Telepon</th>
                                     <th class="text-center">Action</th>
@@ -53,11 +52,13 @@
                                 ?>
                                     <tr>
                                         <td><?= $no++ ?></td>
-                                        <td><?= $value->nama_supplier ?></td>
-                                        <td><?= $value->nama_toko ?></td>
+                                        <td>
+                                            <p>Toko : <strong><?= $value->nama_toko ?></strong></p>
+                                            <p><?= $value->nama_supplier ?></p>
+                                        </td>
                                         <td><?= $value->alamat ?></td>
-                                        <td><?= $value->no_hp ?></td>
-                                        <td><a href="<?= base_url('controllerdatamaster/hapus_supplier/' . $value->id_supplier) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                        <td class="text-center"><span class="badge bg-warning"><?= $value->no_hp ?></span></td>
+                                        <td class="text-center"><a href="<?= base_url('controllerdatamaster/hapus_supplier/' . $value->id_supplier) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                             <button data-toggle="modal" data-target="#modal-edit<?= $value->id_supplier ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
                                         </td>
                                     </tr>

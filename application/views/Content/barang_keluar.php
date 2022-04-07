@@ -6,7 +6,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>Produk Keluar</h1>
-                    <a href="<?= base_url('ControllerPengelolaanBarang/create_brg_keluar') ?>" class="btn btn-warning">Add Produk Keluar</a>
+                    <a href="<?= base_url('ControllerPengelolaanBarang/create_brg_keluar') ?>" class="btn btn-warning"><i class="fas fa-marker"></i> Add Produk Keluar</a>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">

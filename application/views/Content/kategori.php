@@ -53,7 +53,7 @@
                                     foreach ($kategori as $key => $value) {
                                     ?>
                                         <tr>
-                                            <td><?= $no++ ?></td>
+                                            <td class="text-center"><?= $no++ ?>.</td>
                                             <td><?= $value->nama_kategori ?></td>
                                             <td class="text-center"> <a href="<?= base_url('controllerdatamaster/hapus_kategori/' . $value->id_kategori) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                                 <a href="<?= base_url('controllerdatamaster/update_kategori/' . $value->id_kategori) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
