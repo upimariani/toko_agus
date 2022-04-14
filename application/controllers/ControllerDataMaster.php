@@ -167,7 +167,7 @@ class ControllerDataMaster extends CI_Controller
 				'kode_produk' => $this->input->post('kode'),
 				'nama_produk' => $this->input->post('nama'),
 				'harga_produk' => $this->input->post('harga'),
-				// 'stok' => '0'
+				// 'stok' => '0' tidak ada di database
 			);
 			$this->DataMaster->insert_produk($data);
 			$this->session->set_flashdata('success', 'Data Produk Berhasil Ditambahkan!');
