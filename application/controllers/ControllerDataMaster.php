@@ -11,6 +11,7 @@ class ControllerDataMaster extends CI_Controller
 		$this->load->model('DataMaster');
 	}
 
+<<<<<<< HEAD
 	//kelola data user
 	public function user()
 	{
@@ -91,6 +92,13 @@ class ControllerDataMaster extends CI_Controller
 	public function kategori()
 	{
 		$this->form_validation->set_rules('kategori', 'Nama Kategori', 'required');
+=======
+   
+    //kelola data kategori produk
+    public function kategori()
+    {
+        $this->form_validation->set_rules('kategori', 'Nama Kategori', 'required');
+>>>>>>> d9002e8 (menambahkan data pemilik)
 
 		if ($this->form_validation->run() == FALSE) {
 			$data = array(

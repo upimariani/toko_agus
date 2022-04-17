@@ -73,7 +73,7 @@
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Tanggal Produk Keluar</label>
                                             <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                                <input type="text" value="<?= set_value('tgl') ?>" name="tgl" class="form-control datetimepicker-input" placeholder="Masukkan Tanggal Barang Masuk" data-target="#reservationdate" />
+                                                <input type="text" value="<?= set_value('tgl') ?>" name="tgl" class="form-control datetimepicker-input" data-target="#reservationdate" />
                                                 <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                                 </div>

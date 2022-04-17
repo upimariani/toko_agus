@@ -62,10 +62,15 @@
             "autoWidth": false,
         });
 
-        //Date range picker
-        $('#reservationdate').datetimepicker({
-            format: 'YYYY-MM-DD'
-        });
+        $('#reservation').daterangepicker()
+        //Date range picker with time picker
+        $('#reservationtime').daterangepicker({
+            timePicker: true,
+            timePickerIncrement: 30,
+            locale: {
+                format: 'MM/DD/YYYY hh:mm A'
+            }
+        })
     });
 </script>
 <script>

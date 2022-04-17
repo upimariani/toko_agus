@@ -42,7 +42,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="<?= base_url('controllerDataMaster/user') ?>" method="POST" role="form">
+                        <form action="<?= base_url('ControllerKelolaUser/user') ?>" method="POST" role="form">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -148,8 +148,8 @@
                                                                         echo 'Pemilik';
                                                                     } ?></td>
                                             <td class="text-center">
-                                                <a href="<?= base_url('controllerdatamaster/hapus_user/' . $value->id_user) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                                                <a href="<?= base_url('controllerdatamaster/update_user/' . $value->id_user) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                                                <a href="<?= base_url('ControllerKelolaUser/hapus_user/' . $value->id_user) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                                <a href="<?= base_url('ControllerKelolaUser/update_user/' . $value->id_user) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
                                             </td>
                                         </tr>
                                     <?php

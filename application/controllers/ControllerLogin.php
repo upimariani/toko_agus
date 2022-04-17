@@ -26,11 +26,19 @@ class controllerLogin extends CI_Controller
             $login = $this->Login->auth($username, $password);
             if ($login) {
                 $username = $login->username;
+                $level = $login->level_user;
 
-                $this->ci->session->set_userdata('username', $username);
-                $this->session->set_flashdata('success', 'Selamat Datang, ', $username);
+                if ($level == '1') {
+                    $this->ci->session->set_userdata('username', $username);
+                    $this->session->set_flashdata('success', 'Selamat Datang, ', $username);
 
-                redirect(base_url('ControllerDashboard'));
+                    redirect(base_url('ControllerDashboard'));
+                } else if ($level == '2') {
+                    $this->ci->session->set_userdata('username', $username);
+                    $this->session->set_flashdata('success', 'Selamat Datang, ', $username);
+
+                    redirect(base_url('ControllerPimpinan'));
+                }
             } else {
                 $this->session->set_flashdata('error', 'Username dan Password Salah!!!');
                 redirect(base_url('controllerLogin'));

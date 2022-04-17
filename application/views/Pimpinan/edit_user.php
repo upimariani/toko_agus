@@ -29,7 +29,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="<?= base_url('controllerDataMaster/update_user/' . $user->id_user) ?>" method="POST" role="form">
+                        <form action="<?= base_url('ControllerKelolaUser/update_user/' . $user->id_user) ?>" method="POST" role="form">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-6">
