@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Apr 2022 pada 06.55
+-- Waktu pembuatan: 17 Apr 2022 pada 08.52
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.9
 
@@ -84,9 +84,12 @@ CREATE TABLE `produk_keluar` (
 --
 
 INSERT INTO `produk_keluar` (`id_produk_keluar`, `id_produk_masuk`, `qty_kel`, `tgl_keluar`, `time`) VALUES
-(1, 1, '30', '04/07/2022 8:06 AM', '2022-04-07 01:06:53'),
-(2, 1, '5', '04/06/2022 8:28 AM', '2022-04-07 01:28:13'),
-(3, 3, '5', '04/06/2022 8:28 AM', '2022-04-07 01:28:32');
+(1, 1, '30', '04/07/2022', '2022-04-07 01:06:53'),
+(2, 1, '5', '04/06/2022', '2022-04-07 01:28:13'),
+(3, 3, '5', '04/06/2022', '2022-04-07 01:28:32'),
+(4, 1, '11', '04/07/2022', '2022-04-07 05:34:54'),
+(5, 1, '1', '04/29/2022', '2022-04-14 09:25:00'),
+(6, 1, '1', '2022-04-15', '2022-04-14 09:27:13');
 
 -- --------------------------------------------------------
 
@@ -107,7 +110,7 @@ CREATE TABLE `produk_masuk` (
 --
 
 INSERT INTO `produk_masuk` (`id_produk_masuk`, `id_produk`, `qty`, `create_time`, `tgl_masuk`) VALUES
-(1, 2, '15', '2022-04-07 01:06:14', '04/07/2022 8:06'),
+(1, 2, '2', '2022-04-07 01:06:14', '04/07/2022 8:06'),
 (3, 1, '32', '2022-04-07 01:27:40', '04/07/2022 8:27');
 
 -- --------------------------------------------------------
@@ -153,9 +156,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nama_user`, `alamat`, `no_hp`, `username`, `password`, `level_user`) VALUES
-(1, 'Admin edit', 'Kabupaten Kuningan', '08566321145', 'admin', 'admin', 1),
-(3, 'Admin 2', 'Kuningan', '085156727368', 'admin2', 'admin2', 1),
-(4, 'Rizki', 'jln ramajaksa rt.07/03 winduherang', '0876546765541', 'username', 'user', 1);
+(12, 'Agus Permana', 'Kuningan Jawa Barat', '086765456762', 'pemilik', 'pemilik', 2),
+(13, 'Dani Maulana', 'Gunungkeling, Kuningan Jawa Barat', '089123435433', 'admin', 'admin', 1);
 
 --
 -- Indexes for dumped tables
@@ -217,7 +219,7 @@ ALTER TABLE `produk`
 -- AUTO_INCREMENT untuk tabel `produk_keluar`
 --
 ALTER TABLE `produk_keluar`
-  MODIFY `id_produk_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_produk_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `produk_masuk`
@@ -235,7 +237,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
