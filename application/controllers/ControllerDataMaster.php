@@ -12,7 +12,6 @@ class ControllerDataMaster extends CI_Controller
 	}
 
 
-	//kelola data user
 	public function user()
 	{
 
@@ -88,12 +87,10 @@ class ControllerDataMaster extends CI_Controller
 		redirect('controllerDataMaster/user');
 	}
 
-
 	//kelola data kategori produk
 	public function kategori()
 	{
 		$this->form_validation->set_rules('kategori', 'Nama Kategori', 'required');
-		// >>>>>>> d9002e8 (menambahkan data pemilik)
 
 		if ($this->form_validation->run() == FALSE) {
 			$data = array(
