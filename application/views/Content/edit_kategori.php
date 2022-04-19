@@ -21,14 +21,14 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- /.col -->
-                <div class="col-12">
+                <div class="col-lg-6">
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Update Category</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form method="POST" action="<?= base_url('controllerdatamaster/kategori') ?>" role="form">
+                        <form method="POST" action="<?= base_url('controllerdatamaster/update_kategori/' . $kategori->id_kategori) ?>" role="form">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Nama Kategori</label>
@@ -40,6 +40,7 @@
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> Save</button>
+                                <a href="<?= base_url('controllerDataMaster/kategori') ?>" class="btn btn-danger">Kembali</a>
                             </div>
                         </form>
                     </div>

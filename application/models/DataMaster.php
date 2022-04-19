@@ -105,6 +105,13 @@ class DataMaster extends CI_Model
     {
         $this->db->insert('supplier', $data);
     }
+    public function edit_supplier($id)
+    {
+        $this->db->select('*');
+        $this->db->from('supplier');
+        $this->db->where('id_supplier', $id);
+        return $this->db->get()->row();
+    }
     public function update_supplier($id, $data)
     {
         $this->db->where('id_supplier', $id);

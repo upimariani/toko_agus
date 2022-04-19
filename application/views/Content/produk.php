@@ -91,14 +91,14 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Kode Produk</label>
-                                                    <input type="text" name="kode" class="form-control" value="<?= set_value('kode') ?>" id="exampleInputEmail1" placeholder="Masukkan Nama User">
+                                                    <input type="text" name="kode" class="form-control" value="<?= set_value('kode') ?>" id="exampleInputEmail1" placeholder="Masukkan Kode Produk">
                                                     <?= form_error('kode', '<small class="text-danger pl-3">', '</small>'); ?>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword1">Nama Produk</label>
-                                                    <input type="text" name="nama" class="form-control" value="<?= set_value('nama') ?>" id="exampleInputPassword1" placeholder="Masukkan Alamat">
+                                                    <input type="text" name="nama" class="form-control" value="<?= set_value('nama') ?>" id="exampleInputPassword1" placeholder="Masukkan Nama Produk">
                                                     <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                                                 </div>
                                             </div>
@@ -142,14 +142,13 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword1">Harga Produk</label>
-                                                    <input type="text" name="harga" class="form-control" value="<?= set_value('harga') ?>" id="exampleInputPassword1" placeholder="Masukkan Username">
+                                                    <input type="text" name="harga" class="form-control" value="<?= set_value('harga') ?>" id="exampleInputPassword1" placeholder="Masukkan Harga Produk">
                                                     <?= form_error('harga', '<small class="text-danger pl-3">', '</small>'); ?>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- /.card-body -->
-
                                     <div class="card-footer">
                                         <button type="submit" class="btn btn-success">Submit</button>
                                     </div>
