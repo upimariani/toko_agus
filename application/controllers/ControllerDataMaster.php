@@ -87,10 +87,12 @@ class ControllerDataMaster extends CI_Controller
 		redirect('controllerDataMaster/user');
 	}
 
+
 	//kelola data kategori produk
 	public function kategori()
 	{
 		$this->form_validation->set_rules('kategori', 'Nama Kategori', 'required');
+
 
 		if ($this->form_validation->run() == FALSE) {
 			$data = array(
@@ -225,38 +227,61 @@ class ControllerDataMaster extends CI_Controller
 	//kelola data supplier
 	public function supplier()
 	{
-		$data = array(
-			'supplier' => $this->DataMaster->select_supplier()
-		);
-		$this->load->view('Layout/head');
-		$this->load->view('Layout/navbar');
-		$this->load->view('Layout/aside');
-		$this->load->view('Content/supplier', $data);
-		$this->load->view('Layout/footer');
+		$this->form_validation->set_rules('nama', 'Nama Supplier', 'required');
+		$this->form_validation->set_rules('nama_toko', 'Nama Toko', 'required');
+		$this->form_validation->set_rules('alamat', 'Alamat', 'required');
+		$this->form_validation->set_rules('no_hp', 'No Telepon', 'required|min_length[11]|max_length[13]');
+
+
+		if ($this->form_validation->run() == FALSE) {
+			$data = array(
+				'supplier' => $this->DataMaster->select_supplier()
+			);
+			$this->load->view('Layout/head');
+			$this->load->view('Layout/navbar');
+			$this->load->view('Layout/aside');
+			$this->load->view('Content/supplier', $data);
+			$this->load->view('Layout/footer');
+		} else {
+			$data = array(
+				'nama_supplier' => $this->input->post('nama'),
+				'nama_toko' => $this->input->post('nama_toko'),
+				'alamat' => $this->input->post('alamat'),
+				'no_hp' => $this->input->post('no_hp')
+			);
+			$this->DataMaster->insert_supplier($data);
+			$this->session->set_flashdata('success', 'Data Supplier Berhasil Ditambahkan!');
+			redirect('controllerDataMaster/supplier');
+		}
 	}
-	public function create_supplier()
+	public function update_supplier($id)
 	{
-		$data = array(
-			'nama_supplier' => $this->input->post('nama'),
-			'nama_toko' => $this->input->post('nama_toko'),
-			'alamat' => $this->input->post('alamat'),
-			'no_hp' => $this->input->post('no_hp')
-		);
-		$this->DataMaster->insert_supplier($data);
-		$this->session->set_flashdata('success', 'Data Supplier Berhasil Ditambahkan!');
-		redirect('controllerDataMaster/supplier');
-	}
-	public function edit_supplier($id)
-	{
-		$data = array(
-			'nama_supplier' => $this->input->post('nama'),
-			'nama_toko' => $this->input->post('nama_toko'),
-			'alamat' => $this->input->post('alamat'),
-			'no_hp' => $this->input->post('no_hp')
-		);
-		$this->DataMaster->update_supplier($id, $data);
-		$this->session->set_flashdata('success', 'Data Supplier Berhasil Diperbaharui!');
-		redirect('controllerDataMaster/supplier');
+		$this->form_validation->set_rules('nama', 'Nama Supplier', 'required');
+		$this->form_validation->set_rules('nama_toko', 'Nama Toko', 'required');
+		$this->form_validation->set_rules('alamat', 'Alamat', 'required');
+		$this->form_validation->set_rules('no_hp', 'No Telepon', 'required|min_length[11]|max_length[13]');
+
+
+		if ($this->form_validation->run() == FALSE) {
+			$data = array(
+				'supplier' => $this->DataMaster->edit_supplier($id)
+			);
+			$this->load->view('Layout/head');
+			$this->load->view('Layout/navbar');
+			$this->load->view('Layout/aside');
+			$this->load->view('Content/edit_supplier', $data);
+			$this->load->view('Layout/footer');
+		} else {
+			$data = array(
+				'nama_supplier' => $this->input->post('nama'),
+				'nama_toko' => $this->input->post('nama_toko'),
+				'alamat' => $this->input->post('alamat'),
+				'no_hp' => $this->input->post('no_hp')
+			);
+			$this->DataMaster->update_supplier($id, $data);
+			$this->session->set_flashdata('success', 'Data Supplier Berhasil Diperbaharui!');
+			redirect('controllerDataMaster/supplier');
+		}
 	}
 	public function hapus_supplier($id)
 	{
