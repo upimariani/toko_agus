@@ -11,7 +11,7 @@ class ControllerDataMaster extends CI_Controller
 		$this->load->model('DataMaster');
 	}
 
-	//kelola data user
+
 	public function user()
 	{
 
