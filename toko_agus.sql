@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Apr 2022 pada 08.52
--- Versi server: 10.4.6-MariaDB
--- Versi PHP: 7.3.9
+-- Generation Time: May 06, 2022 at 02:17 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori`
+-- Table structure for table `kategori`
 --
 
 CREATE TABLE `kategori` (
@@ -34,18 +34,18 @@ CREATE TABLE `kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kategori`
+-- Dumping data for table `kategori`
 --
 
 INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
-(1, 'Bahan Sembako'),
 (2, 'Sabun'),
-(3, 'Minuman');
+(3, 'Minuman'),
+(4, 'Sembako');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produk`
+-- Table structure for table `produk`
 --
 
 CREATE TABLE `produk` (
@@ -58,17 +58,17 @@ CREATE TABLE `produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `produk`
+-- Dumping data for table `produk`
 --
 
 INSERT INTO `produk` (`id_produk`, `id_kategori`, `id_supplier`, `kode_produk`, `nama_produk`, `harga_produk`) VALUES
-(1, 1, 1, 'A01b', 'Beras', '10000'),
-(2, 1, 2, '0MYK', 'Minyak', '17000');
+(1, 4, 1, 'A01b', 'Beras', '10000'),
+(2, 4, 2, '0MYK', 'Minyak', '17000');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produk_keluar`
+-- Table structure for table `produk_keluar`
 --
 
 CREATE TABLE `produk_keluar` (
@@ -80,7 +80,7 @@ CREATE TABLE `produk_keluar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `produk_keluar`
+-- Dumping data for table `produk_keluar`
 --
 
 INSERT INTO `produk_keluar` (`id_produk_keluar`, `id_produk_masuk`, `qty_kel`, `tgl_keluar`, `time`) VALUES
@@ -94,7 +94,7 @@ INSERT INTO `produk_keluar` (`id_produk_keluar`, `id_produk_masuk`, `qty_kel`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produk_masuk`
+-- Table structure for table `produk_masuk`
 --
 
 CREATE TABLE `produk_masuk` (
@@ -106,7 +106,7 @@ CREATE TABLE `produk_masuk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `produk_masuk`
+-- Dumping data for table `produk_masuk`
 --
 
 INSERT INTO `produk_masuk` (`id_produk_masuk`, `id_produk`, `qty`, `create_time`, `tgl_masuk`) VALUES
@@ -116,7 +116,7 @@ INSERT INTO `produk_masuk` (`id_produk_masuk`, `id_produk`, `qty`, `create_time`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `supplier`
+-- Table structure for table `supplier`
 --
 
 CREATE TABLE `supplier` (
@@ -128,7 +128,7 @@ CREATE TABLE `supplier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `supplier`
+-- Dumping data for table `supplier`
 --
 
 INSERT INTO `supplier` (`id_supplier`, `nama_supplier`, `nama_toko`, `alamat`, `no_hp`) VALUES
@@ -138,7 +138,7 @@ INSERT INTO `supplier` (`id_supplier`, `nama_supplier`, `nama_toko`, `alamat`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -152,7 +152,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `nama_user`, `alamat`, `no_hp`, `username`, `password`, `level_user`) VALUES
@@ -164,77 +164,77 @@ INSERT INTO `user` (`id_user`, `nama_user`, `alamat`, `no_hp`, `username`, `pass
 --
 
 --
--- Indeks untuk tabel `kategori`
+-- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
--- Indeks untuk tabel `produk`
+-- Indexes for table `produk`
 --
 ALTER TABLE `produk`
   ADD PRIMARY KEY (`id_produk`);
 
 --
--- Indeks untuk tabel `produk_keluar`
+-- Indexes for table `produk_keluar`
 --
 ALTER TABLE `produk_keluar`
   ADD PRIMARY KEY (`id_produk_keluar`);
 
 --
--- Indeks untuk tabel `produk_masuk`
+-- Indexes for table `produk_masuk`
 --
 ALTER TABLE `produk_masuk`
   ADD PRIMARY KEY (`id_produk_masuk`);
 
 --
--- Indeks untuk tabel `supplier`
+-- Indexes for table `supplier`
 --
 ALTER TABLE `supplier`
   ADD PRIMARY KEY (`id_supplier`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `kategori`
+-- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `produk`
+-- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
   MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `produk_keluar`
+-- AUTO_INCREMENT for table `produk_keluar`
 --
 ALTER TABLE `produk_keluar`
   MODIFY `id_produk_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `produk_masuk`
+-- AUTO_INCREMENT for table `produk_masuk`
 --
 ALTER TABLE `produk_masuk`
   MODIFY `id_produk_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `supplier`
+-- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
   MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
