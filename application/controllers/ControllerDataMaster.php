@@ -149,6 +149,7 @@ class ControllerDataMaster extends CI_Controller
 		$this->form_validation->set_rules('supplier', 'Supplier', 'required');
 		$this->form_validation->set_rules('kategori', 'Kategori', 'required');
 		$this->form_validation->set_rules('harga', 'Harga', 'required');
+		$this->form_validation->set_rules('stok_min', 'Stok Minimal', 'required');
 
 
 		if ($this->form_validation->run() == FALSE) {
@@ -169,6 +170,7 @@ class ControllerDataMaster extends CI_Controller
 				'kode_produk' => $this->input->post('kode'),
 				'nama_produk' => $this->input->post('nama'),
 				'harga_produk' => $this->input->post('harga'),
+				'stok_min' => $this->input->post('stok_min'),
 				// 'stok' => '0' tidak ada di database
 			);
 			$this->DataMaster->insert_produk($data);
@@ -185,12 +187,14 @@ class ControllerDataMaster extends CI_Controller
 			$this->form_validation->set_rules('kategori', 'Kategori', 'required');
 			$this->form_validation->set_rules('supplier', 'Supplier', 'required');
 			$this->form_validation->set_rules('harga', 'Harga', 'required');
+			$this->form_validation->set_rules('stok_min', 'Stok Minimal', 'required');
 		} else {
 			$this->form_validation->set_rules('kode', 'Kode', 'required|is_unique[produk.kode_produk]');
 			$this->form_validation->set_rules('supplier', 'Supplier', 'required');
 			$this->form_validation->set_rules('nama', 'Nama', 'required');
 			$this->form_validation->set_rules('kategori', 'Kategori', 'required');
 			$this->form_validation->set_rules('harga', 'Harga', 'required');
+			$this->form_validation->set_rules('stok_min', 'Stok Minimal', 'required');
 		}
 		if ($this->form_validation->run() == FALSE) {
 			$data = array(
@@ -210,7 +214,8 @@ class ControllerDataMaster extends CI_Controller
 				'kode_produk' => $this->input->post('kode'),
 				'nama_produk' => $this->input->post('nama'),
 				'harga_produk' => $this->input->post('harga'),
-				'stok' => '0'
+				// 'stok' => '0',
+				'stok_min' => $this->input->post('stok_min'),
 			);
 			$this->DataMaster->update_produk($id, $data);
 			$this->session->set_flashdata('success', 'Data Produk Berhasil Diperbaharui!');

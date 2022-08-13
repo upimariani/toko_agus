@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Produk Keluar</h1>
+                    <h1>Transaksi</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">DataTables</li>
+                        <li class="breadcrumb-item active">Transaksi</li>
                     </ol>
                 </div>
             </div>
@@ -23,6 +23,7 @@
                 </div>
             <?php
             } ?>
+            <a href="<?= base_url('ControllerTransaksi/addtransaksi') ?>">Transaksi Here!</a>
         </div><!-- /.container-fluid -->
     </section>
 
@@ -33,7 +34,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Informasi Produk Keluar</h3>
+                            <h3 class="card-title">Informasi Transaksi</h3>
                         </div>
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
@@ -41,28 +42,27 @@
                                     <tr>
                                         <th class="text-center">No</th>
                                         <th class="text-center">Id Transaksi</th>
-                                        <th class="text-center">Nama Produk</th>
-                                        <th class="text-center">Tanggal Keluar</th>
-                                        <th class="text-center">Quantity</th>
+                                        <th class="text-center">Tanggal Transaksi</th>
+                                        <th class="text-center">Total Bayar</th>
                                         <th class="text-center">Time</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     $no = 1;
-                                    foreach ($brg_keluar as $key => $value) {
+                                    foreach ($transaksi as $key => $value) {
                                     ?>
                                         <tr>
                                             <td><?= $no++ ?></td>
                                             <td><?= $value->id_transaksi ?></td>
-                                            <td><?= $value->nama_produk ?></td>
-                                            <td><?= $value->tgl_keluar ?></td>
-                                            <td class="text-center"><span class="badge badge-warning"><?= $value->qty_kel ?></span></td>
+                                            <td><?= $value->tgl_transaksi ?></td>
+                                            <td>Rp. <?= number_format($value->total_bayar) ?></td>
                                             <td><?= $value->time ?></td>
                                         </tr>
                                     <?php
                                     }
                                     ?>
+
                                 </tbody>
                             </table>
                         </div>

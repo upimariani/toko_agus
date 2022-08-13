@@ -31,7 +31,7 @@ class Dashboard extends CI_Model
     //alert stok abis
     public function laporan_stok()
     {
-        $this->db->select('sum(qty) as qty, produk_masuk.id_produk, nama_produk, harga_produk');
+        $this->db->select('sum(sisa) as qty, produk_masuk.id_produk, nama_produk, harga_produk, stok_min');
         $this->db->from('produk_masuk');
         $this->db->join('produk', 'produk_masuk.id_produk = produk.id_produk', 'left');
         $this->db->group_by('produk_masuk.id_produk');

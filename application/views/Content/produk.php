@@ -51,6 +51,7 @@
                                                 <th class="text-center">Produk</th>
                                                 <th class="text-center">Kategori</th>
                                                 <th class="text-center">Harga</th>
+                                                <th class="text-center">Stok Minimal</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
@@ -68,6 +69,7 @@
                                                     </td>
                                                     <td class="text-center"><?= $value->nama_kategori ?></td>
                                                     <td class="text-center">Rp. <?= number_format($value->harga_produk, 0)  ?></td>
+                                                    <td><?= $value->stok_min ?></td>
                                                     <td class="text-center">
                                                         <a href="<?= base_url('controllerdatamaster/hapus_produk/' . $value->id_produk) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                                         <a href="<?= base_url('controllerdatamaster/update_produk/' . $value->id_produk) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
@@ -144,6 +146,13 @@
                                                     <label for="exampleInputPassword1">Harga Produk</label>
                                                     <input type="text" name="harga" class="form-control" value="<?= set_value('harga') ?>" id="exampleInputPassword1" placeholder="Masukkan Harga Produk">
                                                     <?= form_error('harga', '<small class="text-danger pl-3">', '</small>'); ?>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="exampleInputPassword1">Stok Minimal Produk</label>
+                                                    <input type="text" name="stok_min" class="form-control" value="<?= set_value('harga') ?>" id="exampleInputPassword1" placeholder="Masukkan Stok Minimal Produk">
+                                                    <?= form_error('stok_min', '<small class="text-danger pl-3">', '</small>'); ?>
                                                 </div>
                                             </div>
                                         </div>

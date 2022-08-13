@@ -44,6 +44,7 @@ class ControllerPengelolaanBarang extends CI_Controller
             $data = array(
                 'id_produk' => $this->input->post('produk'),
                 'qty' => $this->input->post('qty'),
+                'sisa' => $this->input->post('qty'),
                 'tgl_masuk' => $this->input->post('tgl')
             );
             $this->KelolaProduk->insert_brg_masuk($data);
@@ -129,7 +130,7 @@ class ControllerPengelolaanBarang extends CI_Controller
                 $qty_seb = $this->input->post('qty_seb');
                 $tot = $qty_seb - $qty;
                 $qty_mas = array(
-                    'qty' => $tot
+                    'sisa' => $tot
                 );
                 $this->db->where('id_produk_masuk', $id);
                 $this->db->update('produk_masuk', $qty_mas);

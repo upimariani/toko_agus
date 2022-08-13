@@ -101,6 +101,13 @@
                                             <?= form_error('harga', '<small class="text-danger pl-3">', '</small>'); ?>
                                         </div>
                                     </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Stok Minimal Produk</label>
+                                            <input type="text" name="stok_min" class="form-control" value="<?= $produk->stok_min ?>" id="exampleInputPassword1" placeholder="Masukkan Stok Minimal Produk">
+                                            <?= form_error('stok_min', '<small class="text-danger pl-3">', '</small>'); ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /.card-body -->

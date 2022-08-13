@@ -103,6 +103,14 @@
                         </li>
                     </ul>
                 </li>
+                <!-- <li class="nav-item">
+                    <a href="<?= base_url('ControllerTransaksi') ?>" class="nav-link   <?php if ($this->uri->segment(1) == 'ControllerTransaksi') {
+                                                                                            echo 'active';
+                                                                                        }  ?>">
+                        <i class="nav-icon fas fa-barcode"></i>
+                        <p>Transaksi</p>
+                    </a>
+                </li> -->
                 <li class="nav-item">
                     <a href="<?= base_url('ControllerLogin/logout') ?>" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>

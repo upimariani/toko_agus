@@ -82,6 +82,9 @@
                                                 <option value="2" <?php if ($user->level_user == '2') {
                                                                         echo 'selected';
                                                                     } ?>>Pemilik</option>
+                                                <option value="3" <?php if ($user->level_user == '3') {
+                                                                        echo 'selected';
+                                                                    } ?>>Kasir</option>
                                             </select>
                                             <?= form_error('level', '<small class="text-danger pl-3">', '</small>'); ?>
                                         </div>
