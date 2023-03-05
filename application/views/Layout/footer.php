@@ -97,7 +97,26 @@ AdminLTE App
         $(".stok").val($(this).find(':selected').attr('data-stok'));
     });
 </script>
+<script>
+    console.log = function() {}
+    $("#produk_admin").on('change', function() {
 
+        $(".harga").html($(this).find(':selected').attr('data-harga'));
+        $(".harga").val($(this).find(':selected').attr('data-harga'));
+
+        $(".price").html($(this).find(':selected').attr('data-price'));
+        $(".price").val($(this).find(':selected').attr('data-price'));
+
+
+        $(".name").html($(this).find(':selected').attr('data-name'));
+        $(".name").val($(this).find(':selected').attr('data-name'));
+
+        $(".sisa").html($(this).find(':selected').attr('data-sisa'));
+        $(".sisa").val($(this).find(':selected').attr('data-sisa'));
+
+
+    });
+</script>
 </body>
 
 </html>

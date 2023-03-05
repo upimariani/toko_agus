@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Agu 2022 pada 12.53
+-- Waktu pembuatan: 05 Mar 2023 pada 14.38
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -54,17 +54,21 @@ CREATE TABLE `produk` (
   `kode_produk` varchar(10) NOT NULL,
   `stok_min` int(11) NOT NULL,
   `nama_produk` varchar(50) NOT NULL,
-  `harga_produk` varchar(25) NOT NULL
+  `harga_produk` varchar(25) NOT NULL,
+  `satuan` varchar(10) NOT NULL,
+  `stok_supp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `produk`
 --
 
-INSERT INTO `produk` (`id_produk`, `id_kategori`, `id_supplier`, `kode_produk`, `stok_min`, `nama_produk`, `harga_produk`) VALUES
-(1, 4, 1, 'A01b', 4, 'Beras', '10000'),
-(2, 4, 2, '0MYK', 5, 'Minyak', '17000'),
-(3, 3, 1, '1234A', 10, 'coba', '20000');
+INSERT INTO `produk` (`id_produk`, `id_kategori`, `id_supplier`, `kode_produk`, `stok_min`, `nama_produk`, `harga_produk`, `satuan`, `stok_supp`) VALUES
+(1, 4, 1, 'A01b', 4, 'Beras', '10000', '', 90),
+(2, 4, 2, '0MYK', 5, 'Minyak', '17000', 'kg', 0),
+(3, 3, 1, '1234A', 10, 'coba', '20000', '', 120),
+(4, 2, 1, 'coba edit', 80, 'coba2', '10000', '', 100),
+(6, 2, 1, 'Ad-678-upi', 0, 'Gula', '10000', 'pcs', 123);
 
 -- --------------------------------------------------------
 
@@ -86,12 +90,6 @@ CREATE TABLE `produk_keluar` (
 --
 
 INSERT INTO `produk_keluar` (`id_produk_keluar`, `id_produk_masuk`, `id_transaksi`, `qty_kel`, `tgl_keluar`, `time`) VALUES
-(1, 0, '1', '30', '04/07/2022', '2022-04-07 01:06:53'),
-(2, 0, '1', '5', '04/06/2022', '2022-04-07 01:28:13'),
-(3, 0, '3', '5', '04/06/2022', '2022-04-07 01:28:32'),
-(4, 0, '1', '11', '04/07/2022', '2022-04-07 05:34:54'),
-(5, 0, '1', '1', '04/29/2022', '2022-04-14 09:25:00'),
-(6, 0, '1', '1', '2022-04-15', '2022-04-14 09:27:13'),
 (7, 1, '20220813HB9ZMOTK', '2', '2022-08-13', '2022-08-13 09:57:28'),
 (8, 3, '20220813HB9ZMOTK', '2', '2022-08-13', '2022-08-13 09:57:28'),
 (9, 3, '20220813HRQKUBGW', '2', '2022-08-13', '2022-08-13 10:12:28'),
@@ -108,19 +106,24 @@ INSERT INTO `produk_keluar` (`id_produk_keluar`, `id_produk_masuk`, `id_transaks
 CREATE TABLE `produk_masuk` (
   `id_produk_masuk` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL,
+  `id_tran_supp` int(11) NOT NULL,
   `qty` varchar(20) NOT NULL,
   `sisa` int(11) NOT NULL,
   `create_time` timestamp NOT NULL DEFAULT current_timestamp(),
-  `tgl_masuk` varchar(15) NOT NULL
+  `tgl_masuk` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `produk_masuk`
 --
 
-INSERT INTO `produk_masuk` (`id_produk_masuk`, `id_produk`, `qty`, `sisa`, `create_time`, `tgl_masuk`) VALUES
-(1, 2, '2', 0, '2022-04-07 01:06:14', '04/07/2022 8:06'),
-(3, 1, '32', 5, '2022-04-07 01:27:40', '04/07/2022 8:27');
+INSERT INTO `produk_masuk` (`id_produk_masuk`, `id_produk`, `id_tran_supp`, `qty`, `sisa`, `create_time`, `tgl_masuk`) VALUES
+(1, 2, 0, '2', 0, '2022-04-07 01:06:14', '04/07/2022 8:06'),
+(3, 1, 0, '32', 5, '2022-04-07 01:27:40', '04/07/2022 8:27'),
+(4, 4, 0, '10', 10, '2022-09-07 13:31:41', '2022-09-07'),
+(5, 2, 1, '2', 2, '2023-03-03 12:42:16', '2023-03-16'),
+(6, 2, 1, '2', 2, '2023-03-04 15:26:19', '2023-03-04'),
+(7, 2, 2, '2', 2, '2023-03-05 06:48:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -133,16 +136,18 @@ CREATE TABLE `supplier` (
   `nama_supplier` varchar(50) NOT NULL,
   `nama_toko` varchar(50) NOT NULL,
   `alamat` varchar(125) NOT NULL,
-  `no_hp` varchar(15) NOT NULL
+  `no_hp` varchar(15) NOT NULL,
+  `username_supp` varchar(50) NOT NULL,
+  `pass_supp` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `supplier`
 --
 
-INSERT INTO `supplier` (`id_supplier`, `nama_supplier`, `nama_toko`, `alamat`, `no_hp`) VALUES
-(1, 'Rudi Ahmad', 'Berkah Jaya', 'Ciawigebang', '085475236598'),
-(2, 'Rahmat Hidayat', 'Sumber Waras', 'Longkewang', '085456987523');
+INSERT INTO `supplier` (`id_supplier`, `nama_supplier`, `nama_toko`, `alamat`, `no_hp`, `username_supp`, `pass_supp`) VALUES
+(1, 'Rudi Ahmad', 'Berkah Jaya', 'Ciawigebang', '085475236598', 'rudi', 'rudiahmad'),
+(2, 'Rahmat Hidayat', 'Sumber Waras', 'Longkewang', '085456987523', 'rahmat', 'rahmathidayat');
 
 -- --------------------------------------------------------
 
@@ -170,6 +175,29 @@ INSERT INTO `transaksi` (`id_transaksi`, `id_user`, `tgl_transaksi`, `total_baya
 ('20220813HB9ZMOTK', 13, '2022-08-13', '54000', '60000', '6000', '2022-08-13 10:11:12'),
 ('20220813HRQKUBGW', 14, '2022-08-13', '20000', '30000', '10000', '2022-08-13 10:12:28'),
 ('20220813OJ031C5C', 14, '2022-08-13', '50000', '50000', '0', '2022-08-13 10:18:37');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `transaksi_supp`
+--
+
+CREATE TABLE `transaksi_supp` (
+  `id_tran_supp` int(11) NOT NULL,
+  `id_supplier` int(11) NOT NULL,
+  `tgl_tran_supp` varchar(10) NOT NULL,
+  `tot_bayar` varchar(15) NOT NULL,
+  `status_transaksi` int(11) NOT NULL,
+  `time_supp` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `transaksi_supp`
+--
+
+INSERT INTO `transaksi_supp` (`id_tran_supp`, `id_supplier`, `tgl_tran_supp`, `tot_bayar`, `status_transaksi`, `time_supp`) VALUES
+(1, 2, '2023-03-04', '34000', 1, '2023-03-04 15:26:19'),
+(2, 2, '2023-03-05', '34000', 0, '2023-03-05 06:48:18');
 
 -- --------------------------------------------------------
 
@@ -237,6 +265,12 @@ ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`id_transaksi`);
 
 --
+-- Indeks untuk tabel `transaksi_supp`
+--
+ALTER TABLE `transaksi_supp`
+  ADD PRIMARY KEY (`id_tran_supp`);
+
+--
 -- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
@@ -250,13 +284,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `produk_keluar`
@@ -268,13 +302,19 @@ ALTER TABLE `produk_keluar`
 -- AUTO_INCREMENT untuk tabel `produk_masuk`
 --
 ALTER TABLE `produk_masuk`
-  MODIFY `id_produk_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_produk_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `supplier`
 --
 ALTER TABLE `supplier`
   MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `transaksi_supp`
+--
+ALTER TABLE `transaksi_supp`
+  MODIFY `id_tran_supp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`

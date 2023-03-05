@@ -33,7 +33,7 @@ class ControllerPengelolaanBarang extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             $data = array(
-                'produk' => $this->DataMaster->select_produk()
+                'produk' => $this->DataMaster->select_produk_admin()
             );
             $this->load->view('Layout/head');
             $this->load->view('Layout/navbar');
@@ -59,7 +59,7 @@ class ControllerPengelolaanBarang extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             $data = array(
-                'produk' => $this->DataMaster->select_produk(),
+                'produk' => $this->DataMaster->select_produk_admin(),
                 'brg_masuk' => $this->KelolaProduk->edit_brg_masuk($id)
             );
             $this->load->view('Layout/head');
@@ -70,6 +70,7 @@ class ControllerPengelolaanBarang extends CI_Controller
         } else {
             $data = array(
                 'qty' => $this->input->post('qty'),
+                'sisa' => $this->input->post('qty'),
                 'tgl_masuk' => $this->input->post('tgl')
             );
             $this->db->where('id_produk_masuk', $id);

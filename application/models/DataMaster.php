@@ -74,6 +74,16 @@ class DataMaster extends CI_Model
         $this->db->from('produk');
         $this->db->join('kategori', 'produk.id_kategori = kategori.id_kategori', 'left');
         $this->db->join('supplier', 'produk.id_supplier = supplier.id_supplier', 'left');
+        $this->db->where('supplier.id_supplier', $this->session->userdata('id'));
+        return $this->db->get()->result();
+    }
+    public function select_produk_admin($supplier)
+    {
+        $this->db->select('*');
+        $this->db->from('produk');
+        $this->db->join('kategori', 'produk.id_kategori = kategori.id_kategori', 'left');
+        $this->db->join('supplier', 'produk.id_supplier = supplier.id_supplier', 'left');
+        $this->db->where('supplier.id_supplier', $supplier);
         return $this->db->get()->result();
     }
     public function edit_produk($id)

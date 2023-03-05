@@ -107,6 +107,7 @@
                             <thead>
                                 <tr>
                                     <th>Product</th>
+                                    <th>Satuan</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Batas Minimal Stok</th>
@@ -120,6 +121,7 @@
                                         <td>
                                             <?= $value->nama_produk ?>
                                         </td>
+                                        <td><?= $value->satuan ?></td>
                                         <td>Rp. <?= number_format($value->harga_produk, 0) ?></td>
                                         <td>
                                             <?php

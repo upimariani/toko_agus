@@ -16,20 +16,10 @@
 <!-- jQuery UI 1.11.4 -->
 <script src="<?= base_url('asset/AdminLTE/') ?>plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-    $.widget.bridge('uibutton', $.ui.button)
-</script>
+
 <!-- Bootstrap 4 -->
 <script src="<?= base_url('asset/AdminLTE/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="<?= base_url('asset/AdminLTE/') ?>plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="<?= base_url('asset/AdminLTE/') ?>plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="<?= base_url('asset/AdminLTE/') ?>plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="<?= base_url('asset/AdminLTE/') ?>plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="<?= base_url('asset/AdminLTE/') ?>plugins/jquery-knob/jquery.knob.min.js"></script>
+
 <!-- daterangepicker -->
 <script src="<?= base_url('asset/AdminLTE/') ?>plugins/moment/moment.min.js"></script>
 <script src="<?= base_url('asset/AdminLTE/') ?>plugins/daterangepicker/daterangepicker.js"></script>
@@ -49,12 +39,20 @@
 <script src="<?= base_url('asset/AdminLTE/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="<?= base_url('asset/AdminLTE/') ?>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?= base_url('asset/AdminLTE/') ?>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<!-- AdminLTE App -->
+AdminLTE App
 <script src="<?= base_url('asset/AdminLTE/') ?>dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url('asset/AdminLTE/') ?>dist/js/demo.js"></script>
-<script src="<?= base_url('asset/AdminLTE/') ?>plugins/daterangepicker/daterangepicker.js"></script>
+<script src="<?= base_url('asset/AdminLTE/') ?>plugins/select2/js/select2.full.min.js"></script>
 <!-- page script -->
+
+<script>
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+    })
+</script>
 <script>
     $(function() {
         $("#example1").DataTable({
@@ -62,15 +60,10 @@
             "autoWidth": false,
         });
 
-        $('#reservation').daterangepicker()
-        //Date range picker with time picker
-        $('#reservationtime').daterangepicker({
-            timePicker: true,
-            timePickerIncrement: 30,
-            locale: {
-                format: 'MM/DD/YYYY hh:mm A'
-            }
-        })
+        //Date range picker
+        $('#reservationdate').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
     });
 </script>
 <script>
@@ -102,25 +95,6 @@
 
         $(".stok").html($(this).find(':selected').attr('data-stok'));
         $(".stok").val($(this).find(':selected').attr('data-stok'));
-    });
-</script>
-<script>
-    console.log = function() {}
-    $("#produk_cart").on('change', function() {
-
-        $(".harga").html($(this).find(':selected').attr('data-harga'));
-        $(".harga").val($(this).find(':selected').attr('data-harga'));
-
-        $(".price").html($(this).find(':selected').attr('data-price'));
-        $(".price").val($(this).find(':selected').attr('data-price'));
-
-
-        $(".name").html($(this).find(':selected').attr('data-name'));
-        $(".name").val($(this).find(':selected').attr('data-name'));
-
-        $(".sisa").html($(this).find(':selected').attr('data-sisa'));
-        $(".sisa").val($(this).find(':selected').attr('data-sisa'));
-
     });
 </script>
 

@@ -98,11 +98,11 @@ class ControllerDataMaster extends CI_Controller
 			$data = array(
 				'kategori' => $this->DataMaster->select_kategori()
 			);
-			$this->load->view('Layout/head');
-			$this->load->view('Layout/navbar');
-			$this->load->view('Layout/aside');
+			$this->load->view('Supplier/Layout/head');
+			$this->load->view('Supplier/Layout/navbar');
+			$this->load->view('Supplier/Layout/aside');
 			$this->load->view('Content/kategori', $data);
-			$this->load->view('Layout/footer');
+			$this->load->view('Supplier/Layout/footer');
 		} else {
 			$data = array(
 				'nama_kategori' => $this->input->post('kategori')
@@ -120,11 +120,11 @@ class ControllerDataMaster extends CI_Controller
 			$data = array(
 				'kategori' => $this->DataMaster->edit_kategori($id)
 			);
-			$this->load->view('Layout/head');
-			$this->load->view('Layout/navbar');
-			$this->load->view('Layout/aside');
+			$this->load->view('Supplier/Layout/head');
+			$this->load->view('Supplier/Layout/navbar');
+			$this->load->view('Supplier/Layout/aside');
 			$this->load->view('Content/edit_kategori', $data);
-			$this->load->view('Layout/footer');
+			$this->load->view('Supplier/Layout/footer');
 		} else {
 			$data = array(
 				'nama_kategori' => $this->input->post('kategori')
@@ -146,10 +146,10 @@ class ControllerDataMaster extends CI_Controller
 	{
 		$this->form_validation->set_rules('kode', 'Kode', 'required|is_unique[produk.kode_produk]');
 		$this->form_validation->set_rules('nama', 'Nama', 'required');
-		$this->form_validation->set_rules('supplier', 'Supplier', 'required');
 		$this->form_validation->set_rules('kategori', 'Kategori', 'required');
 		$this->form_validation->set_rules('harga', 'Harga', 'required');
-		$this->form_validation->set_rules('stok_min', 'Stok Minimal', 'required');
+		$this->form_validation->set_rules('satuan', 'Satuan Barang', 'required');
+		// $this->form_validation->set_rules('stok_supp', 'Stok Barang', 'required');
 
 
 		if ($this->form_validation->run() == FALSE) {
@@ -158,21 +158,36 @@ class ControllerDataMaster extends CI_Controller
 				'kategori' => $this->DataMaster->select_kategori(),
 				'supplier' => $this->DataMaster->select_supplier()
 			);
-			$this->load->view('Layout/head');
-			$this->load->view('Layout/navbar');
-			$this->load->view('Layout/aside');
+			$this->load->view('Supplier/Layout/head');
+			$this->load->view('Supplier/Layout/navbar');
+			$this->load->view('Supplier/Layout/aside');
 			$this->load->view('Content/produk', $data);
-			$this->load->view('Layout/footer');
+			$this->load->view('Supplier/Layout/footer');
 		} else {
+			// $p_penyimpanan = $this->input->post('p_penyimpanan');
+			// $l_penyimpanan = $this->input->post('l_penyimpanan');
+			// $t_penyimpanan = $this->input->post('t_penyimpanan');
+			// $volume_penyimpanan = $p_penyimpanan * $l_penyimpanan * $t_penyimpanan;
+
+
+			// $p_barang = $this->input->post('p_barang');
+			// $l_barang = $this->input->post('l_barang');
+			// $t_barang = $this->input->post('t_barang');
+			// $volume_barang = $p_barang * $l_barang * $t_barang;
+
+			// $total = $volume_penyimpanan / $volume_barang;
 			$data = array(
 				'id_kategori' => $this->input->post('kategori'),
-				'id_supplier' => $this->input->post('supplier'),
+				'id_supplier' => $this->session->userdata('id'),
 				'kode_produk' => $this->input->post('kode'),
 				'nama_produk' => $this->input->post('nama'),
 				'harga_produk' => $this->input->post('harga'),
-				'stok_min' => $this->input->post('stok_min'),
+				'satuan' => $this->input->post('satuan'),
+				'stok_supp' => $this->input->post('stok_supp'),
+				// 'stok_min' => $total,
 				// 'stok' => '0' tidak ada di database
 			);
+			// var_dump($data);
 			$this->DataMaster->insert_produk($data);
 			$this->session->set_flashdata('success', 'Data Produk Berhasil Ditambahkan!');
 			redirect('controllerDataMaster/produk');
@@ -185,16 +200,14 @@ class ControllerDataMaster extends CI_Controller
 		if ($produk->kode_produk == $kode) {
 			$this->form_validation->set_rules('nama', 'Nama', 'required');
 			$this->form_validation->set_rules('kategori', 'Kategori', 'required');
-			$this->form_validation->set_rules('supplier', 'Supplier', 'required');
 			$this->form_validation->set_rules('harga', 'Harga', 'required');
-			$this->form_validation->set_rules('stok_min', 'Stok Minimal', 'required');
+			// $this->form_validation->set_rules('stok_min', 'Stok Minimal', 'required');
 		} else {
 			$this->form_validation->set_rules('kode', 'Kode', 'required|is_unique[produk.kode_produk]');
-			$this->form_validation->set_rules('supplier', 'Supplier', 'required');
 			$this->form_validation->set_rules('nama', 'Nama', 'required');
 			$this->form_validation->set_rules('kategori', 'Kategori', 'required');
 			$this->form_validation->set_rules('harga', 'Harga', 'required');
-			$this->form_validation->set_rules('stok_min', 'Stok Minimal', 'required');
+			// $this->form_validation->set_rules('stok_min', 'Stok Minimal', 'required');
 		}
 		if ($this->form_validation->run() == FALSE) {
 			$data = array(
@@ -202,21 +215,48 @@ class ControllerDataMaster extends CI_Controller
 				'kategori' => $this->DataMaster->select_kategori(),
 				'supplier' => $this->DataMaster->select_supplier()
 			);
-			$this->load->view('Layout/head');
-			$this->load->view('Layout/navbar');
-			$this->load->view('Layout/aside');
+			$this->load->view('Supplier/Layout/head');
+			$this->load->view('Supplier/Layout/navbar');
+			$this->load->view('Supplier/Layout/aside');
 			$this->load->view('Content/edit_produk', $data);
-			$this->load->view('Layout/footer');
+			$this->load->view('Supplier/Layout/footer');
 		} else {
-			$data = array(
-				'id_kategori' => $this->input->post('kategori'),
-				'id_supplier' => $this->input->post('supplier'),
-				'kode_produk' => $this->input->post('kode'),
-				'nama_produk' => $this->input->post('nama'),
-				'harga_produk' => $this->input->post('harga'),
-				// 'stok' => '0',
-				'stok_min' => $this->input->post('stok_min'),
-			);
+			$p_penyimpanan = $this->input->post('p_penyimpanan');
+			if ($p_penyimpanan == '') {
+				$data = array(
+					'id_kategori' => $this->input->post('kategori'),
+					'kode_produk' => $this->input->post('kode'),
+					'nama_produk' => $this->input->post('nama'),
+					'harga_produk' => $this->input->post('harga'),
+					'satuan' => $this->input->post('satuan'),
+					'stok_supp' => $this->input->post('stok_supp')
+					// 'stok' => '0',
+					// 'stok_min' => $total
+				);
+			} else {
+
+
+				// $p_penyimpanan = $this->input->post('p_penyimpanan');
+				// $l_penyimpanan = $this->input->post('l_penyimpanan');
+				// $t_penyimpanan = $this->input->post('t_penyimpanan');
+				// $volume_penyimpanan = $p_penyimpanan * $l_penyimpanan * $t_penyimpanan;
+
+
+				// $p_barang = $this->input->post('p_barang');
+				// $l_barang = $this->input->post('l_barang');
+				// $t_barang = $this->input->post('t_barang');
+				// $volume_barang = $p_barang * $l_barang * $t_barang;
+
+				// $total = $volume_penyimpanan / $volume_barang;
+				$data = array(
+					'id_kategori' => $this->input->post('kategori'),
+					'kode_produk' => $this->input->post('kode'),
+					'nama_produk' => $this->input->post('nama'),
+					'harga_produk' => $this->input->post('harga'),
+					// 'stok' => '0',
+					// 'stok_min' => $total
+				);
+			}
 			$this->DataMaster->update_produk($id, $data);
 			$this->session->set_flashdata('success', 'Data Produk Berhasil Diperbaharui!');
 			redirect('controllerDataMaster/produk');

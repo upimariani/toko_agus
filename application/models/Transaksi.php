@@ -37,6 +37,26 @@ class Transaksi extends CI_Model
         $data['transaksi'] = $this->db->query("SELECT * FROM `transaksi` WHERE transaksi.id_transaksi='" . $id . "'")->row();
         return $data;
     }
+
+
+    //transaksi admin
+    public function transaksi_admin()
+    {
+        return $this->db->query("SELECT * FROM `transaksi_supp` JOIN supplier ON transaksi_supp.id_supplier=supplier.id_supplier;")->result();
+    }
+
+
+    //transaksi supplier
+    public function transaksi_supplier()
+    {
+        return $this->db->query("SELECT * FROM `transaksi_supp` JOIN supplier ON transaksi_supp.id_supplier=supplier.id_supplier where supplier.id_supplier='" . $this->session->userdata('id') . "';")->result();
+    }
+    public function detail_transaksi($id)
+    {
+        $data['pesanan'] = $this->db->query("SELECT * FROM `transaksi_supp` JOIN produk_masuk ON transaksi_supp.id_tran_supp = produk_masuk.id_tran_supp JOIN produk ON produk_masuk.id_produk = produk.id_produk WHERE transaksi_supp.id_tran_supp='" . $id . "'")->result();
+        $data['transaksi'] = $this->db->query("SELECT * FROM `transaksi_supp` JOIN supplier ON transaksi_supp.id_supplier=supplier.id_supplier WHERE transaksi_supp.id_tran_supp='" . $id . "'")->row();
+        return $data;
+    }
 }
 
 /* End of file Transaksi.php */

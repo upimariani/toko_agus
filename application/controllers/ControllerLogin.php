@@ -61,7 +61,8 @@ class controllerLogin extends CI_Controller
     }
     public function logout()
     {
-        $this->ci->session->unset_userdata('username');
+        $this->ci->session->unset_userdata('id');
+        $this->cart->destroy();
         $this->session->set_flashdata('success', 'Anda Berhasil LogOut!');
 
         redirect('controllerLogin');
@@ -72,6 +73,40 @@ class controllerLogin extends CI_Controller
             $this->session->set_flashdata('error', 'Anda Belum Melakukan Login');
             redirect('controllerLogin');
         }
+    }
+
+
+    //login supplier
+    public function login_supplier()
+    {
+        $this->form_validation->set_rules('username', 'Username', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('Supplier/vLoginSupplier');
+        } else {
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+            $login = $this->Login->auth_supplier($username, $password);
+            if ($login) {
+                $id = $login->id_supplier;
+                $array = array(
+                    'id' => $id
+                );
+                $this->session->set_userdata($array);
+                redirect('ControllerSupplier/transaksi');
+            } else {
+                $this->session->set_flashdata('error', 'Username dan Password Salah!!!');
+                redirect(base_url('controllerLogin/login_supplier'));
+            }
+        }
+    }
+    public function logout_supplier()
+    {
+        $this->ci->session->unset_userdata('id');
+        $this->ci->session->unset_userdata('supplier');
+        $this->cart->destroy();
+        $this->session->set_flashdata('success', 'Anda Berhasil LogOut!');
+        redirect('controllerLogin/login_supplier');
     }
 }
         

@@ -13,6 +13,7 @@ class KelolaProduk extends CI_Model
         $this->db->join('produk', 'produk_masuk.id_produk = produk.id_produk', 'left');
         $this->db->join('kategori', 'produk.id_kategori = kategori.id_kategori', 'left');
         $this->db->where('produk_masuk.qty!=0');
+        $this->db->where('tgl_masuk != ', NULL);
 
         return $this->db->get()->result();
     }
