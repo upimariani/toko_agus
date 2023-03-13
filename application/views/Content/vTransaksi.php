@@ -64,9 +64,14 @@
                                                 ?>
                                                     <span class="badge badge-danger">Belum Dikonfirmasi</span>
                                                 <?php
-                                                } else {
+                                                } else if ($value->status_transaksi == '1') {
                                                 ?>
                                                     <span class="badge badge-success">Selesai</span>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <span class="badge badge-danger">Pesanan Ditolak!</span>
+
                                                 <?php
                                                 } ?>
                                             </td>

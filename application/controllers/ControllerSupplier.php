@@ -132,6 +132,15 @@ class ControllerSupplier extends CI_Controller
         redirect('ControllerSupplier/transaksi');
     }
 
+    public function tolak_pesanan($id_transaksi)
+    {
+        $data = array(
+            'status_transaksi' => '9'
+        );
+        $this->db->where('id_tran_supp', $id_transaksi);
+        $this->db->update('transaksi_supp', $data);
+        redirect('ControllerSupplier/transaksi');
+    }
     public function detail_transaksi_supplier($id_transaksi)
     {
         $data = array(

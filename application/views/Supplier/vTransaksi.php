@@ -64,9 +64,14 @@
                                             ?>
                                                 <span class="badge badge-danger">Belum Dikonfirmasi</span>
                                             <?php
-                                            } else {
+                                            } else if ($value->status_transaksi == '1') {
                                             ?>
                                                 <span class="badge badge-success">Selesai</span>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <span class="badge badge-danger">Tolak Pesanan!</span>
+
                                             <?php
                                             } ?>
                                         </td>
@@ -76,6 +81,7 @@
                                             if ($value->status_transaksi == '0') {
                                             ?>
                                                 <a href="<?= base_url('ControllerSupplier/konfirmasi_supplier/' . $value->id_tran_supp) ?>" class="btn btn-warning">Konfirmasi</a>
+                                                <a href="<?= base_url('ControllerSupplier/tolak_pesanan/' . $value->id_tran_supp) ?>" class="btn btn-danger">Tolak Pesanan</a>
                                             <?php
                                             }
                                             ?>
