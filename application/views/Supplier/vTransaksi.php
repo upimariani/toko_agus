@@ -77,14 +77,7 @@
                                         </td>
                                         <td class="text-center">
                                             <a href="<?= base_url('ControllerSupplier/detail_transaksi_supplier/' . $value->id_tran_supp) ?>" class="btn btn-success">Detail Transaksi</a>
-                                            <?php
-                                            if ($value->status_transaksi == '0') {
-                                            ?>
-                                                <a href="<?= base_url('ControllerSupplier/konfirmasi_supplier/' . $value->id_tran_supp) ?>" class="btn btn-warning">Konfirmasi</a>
-                                                <a href="<?= base_url('ControllerSupplier/tolak_pesanan/' . $value->id_tran_supp) ?>" class="btn btn-danger">Tolak Pesanan</a>
-                                            <?php
-                                            }
-                                            ?>
+
 
                                         </td>
                                     </tr>

@@ -102,6 +102,14 @@
                                 <button onclick="window.print();" class="btn btn-success float-right"><i class="far fa-credit-card"></i>
                                     Print
                                 </button>
+                                <?php
+                                if ($transaksi['transaksi']->status_transaksi == '0') {
+                                ?>
+                                    <a href="<?= base_url('ControllerSupplier/konfirmasi_supplier/' . $transaksi['transaksi']->id_tran_supp) ?>" class="btn btn-warning">Konfirmasi</a>
+                                    <a href="<?= base_url('ControllerSupplier/tolak_pesanan/' . $transaksi['transaksi']->id_tran_supp) ?>" class="btn btn-danger">Tolak Pesanan</a>
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
